@@ -50,6 +50,8 @@ dependencies {
     implementation 'com.meituan.android.walle:library:1.1.6'
 }
 
+//https://github.com/Meituan-Dianping/walle
+//https://github.com/Meituan-Dianping/walle/blob/master/walle-cli/README.md
 walle {
     // 指定渠道包的输出路径
     apkOutputFolder = new File("${project.buildDir}/outputs/channels")
@@ -63,4 +65,16 @@ walle {
     // 渠道&额外信息配置文件，与channelFile互斥  都存在时configFile优先执行
     configFile = new File("D:/External/WalleApplication/config.json")
 //    configFile = new File("${project.getProjectDir()}/config.json")
+
+    /**
+     * 执行walle-cli命令
+     * 查看渠道信息
+     * java -jar walle-cli-all.jar show app\build\outputs\channels\app-com.lin.walle-360cn-release-v1.0-1-20180423-105856.apk
+     * 写入渠道后生成app-release_meituan.apk文件
+     * java -jar walle-cli-all.jar put -c meituan app\build\outputs\apk\release\app-release.apk
+     * 写入渠道和额外信息
+     * java -jar walle-cli-all.jar put -c meituan -e buildtime=20161212,hash=xxxxxxx app\build\outputs\apk\release\app-release.apk
+     * 指定输出文件
+     * java -jar walle-cli-all.jar put -c meituan app\build\outputs\apk\release\app-release.apk app\build\outputs\apk\release\app-release111.apk
+     */
 }
