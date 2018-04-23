@@ -56,10 +56,11 @@ walle {
     // 定制渠道包的APK的文件名称
     apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk'
     // 渠道配置文件
-    channelFile = new File("D:/External/WalleApplication/channel")
+//    channelFile = new File("D:/External/WalleApplication/channel")
     //单个打包没问题；执行gradlew clean assembleReleaseChannels全部打包时，会报channel file does not exist
 //    channelFile = new File("${project.getProjectDir()}/channel")
 
     // 渠道&额外信息配置文件，与channelFile互斥  都存在时configFile优先执行
+    configFile = new File("D:/External/WalleApplication/config.json")
 //    configFile = new File("${project.getProjectDir()}/config.json")
 }
