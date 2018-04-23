@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+apply plugin: 'walle'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.lin.walle"
+        minSdkVersion 14
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        flavorDimensions "1"
+    }
+
+    signingConfigs {
+        Blackbox {
+            keyAlias 'Blackbox'
+            keyPassword '20130612'
+            storeFile file('../blackbox.jks')
+            storePassword '20130612'
+            v2SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.Blackbox
+        }
+    }
+
+//    productFlavors {
+//        channel_product1{
+//
+//        }
+//        channel_product2{
+//
+//        }
+//        channel_product3{
+//
+//        }
+//    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation 'com.meituan.android.walle:library:1.1.6'
+}
+
+walle {
+    // 指定渠道包的输出路径
+    apkOutputFolder = new File("${project.buildDir}/outputs/channels")
+    // 定制渠道包的APK的文件名称
+    apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk'
+    // 渠道配置文件
+    channelFile = new File("D:/External/WalleApplication/channel")
+    //单个打包没问题；执行gradlew clean assembleReleaseChannels全部打包时，会报channel file does not exist
+//    channelFile = new File("${project.getProjectDir()}/channel")
+
+    // 渠道&额外信息配置文件，与channelFile互斥  都存在时configFile优先执行
+//    configFile = new File("${project.getProjectDir()}/config.json")
+}
