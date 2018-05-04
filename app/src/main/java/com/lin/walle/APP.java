@@ -31,7 +31,6 @@ public class APP extends Application {
         // 或者也可以直接根据key获取
 //        String value = WalleChannelReader.get(context, "buildtime");
 
-
         Toast.makeText(this, WalleChannelReader.getChannel(this), Toast.LENGTH_LONG).show();
     }
 }

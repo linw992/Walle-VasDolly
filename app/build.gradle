@@ -30,17 +30,18 @@ android {
         }
     }
 
-//    productFlavors {
-//        channel_product1{
-//
-//        }
-//        channel_product2{
-//
-//        }
-//        channel_product3{
-//
-//        }
-//    }
+    /**
+     * 使用productFlavors后
+     * 版本构建由gradlew clean assembleReleaseChannels改为gradlew clean assembleChannel1ReleaseChannels
+     */
+    productFlavors {
+        channel1{
+            buildConfigField "String", "channel", '"intercon1"'
+        }
+        channel2{
+            buildConfigField "String", "channel", '"intercon2"'
+        }
+    }
 }
 
 dependencies {
@@ -59,12 +60,13 @@ walle {
     apkFileNameFormat = '${appName}-${packageName}-${channel}-${buildType}-v${versionName}-${versionCode}-${buildTime}.apk'
     // 渠道配置文件
 //    channelFile = new File("D:/External/WalleApplication/channel")
-    //单个打包没问题；执行gradlew clean assembleReleaseChannels全部打包时，会报channel file does not exist
+//    print("${project.getProjectDir()}")   //D:\External\WalleApplication\app
 //    channelFile = new File("${project.getProjectDir()}/channel")
 
     // 渠道&额外信息配置文件，与channelFile互斥  都存在时configFile优先执行
-    configFile = new File("D:/External/WalleApplication/config.json")
-//    configFile = new File("${project.getProjectDir()}/config.json")
+//    configFile = new File("D:/External/WalleApplication/config.json")
+//    print("${project.getProjectDir()}")   //D:\External\WalleApplication\app
+    configFile = new File("${project.getProjectDir()}/config.json")
 
     /**
      * 执行walle-cli命令
