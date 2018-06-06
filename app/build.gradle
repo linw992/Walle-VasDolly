@@ -72,7 +72,7 @@ walle {
      * 执行walle-cli命令
      * 查看渠道信息
      * java -jar walle-cli-all.jar show app\build\outputs\channels\app-com.lin.walle-360cn-release-v1.0-1-20180423-105856.apk
-     * 写入渠道后生成app-release_meituan.apk文件
+     * 写入渠道 生成app-release_meituan.apk文件
      * java -jar walle-cli-all.jar put -c meituan app\build\outputs\apk\release\app-release.apk
      * 写入渠道和额外信息
      * java -jar walle-cli-all.jar put -c meituan -e buildtime=20161212,hash=xxxxxxx app\build\outputs\apk\release\app-release.apk
