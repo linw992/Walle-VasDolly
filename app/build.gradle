@@ -14,10 +14,10 @@ android {
 
     signingConfigs {
         Blackbox {
-            keyAlias 'Blackbox'
-            keyPassword '20130612'
-            storeFile file('../blackbox.jks')
-            storePassword '20130612'
+            keyAlias 'test'
+            keyPassword 'linwei'
+            storeFile file('../lintest')
+            storePassword 'linwei'
             v2SigningEnabled true
         }
     }
