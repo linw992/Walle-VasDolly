@@ -1,6 +1,7 @@
 package com.lin.walle;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         /**
          * 使用configFile --config.json配置
          */
-        ChannelInfo channelInfo= WalleChannelReader.getChannelInfo(getApplicationContext());
+        ChannelInfo channelInfo = WalleChannelReader.getChannelInfo(getApplicationContext());
         if (channelInfo != null) {
             String channel = channelInfo.getChannel();
             Map<String, String> extraInfo = channelInfo.getExtraInfo();
@@ -33,8 +34,12 @@ public class MainActivity extends AppCompatActivity {
         // 或者也可以直接根据key获取
 //        String value = WalleChannelReader.get(context, "buildtime");
 
-
-        Toast.makeText(this, WalleChannelReader.getChannel(getApplicationContext()), Toast.LENGTH_LONG).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(MainActivity.this, WalleChannelReader.getChannel(getApplicationContext()), Toast.LENGTH_LONG).show();
+            }
+        }, 5000);
 
     }
 }

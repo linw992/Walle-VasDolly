@@ -35,11 +35,21 @@ android {
      * 版本构建由gradlew clean assembleReleaseChannels改为gradlew clean assembleChannel1ReleaseChannels
      */
     productFlavors {
+        /**
+         * 指定渠道为：Channel1 渠道内容为：美团
+         * gradlew clean assembleChannel1ReleaseChannels -PchannelList=meituan
+         */
         channel1{
             buildConfigField "String", "channel", '"intercon1"'
+            manifestPlaceholders = [
+                    ic_app: "@mipmap/icon_1"
+            ]
         }
         channel2{
             buildConfigField "String", "channel", '"intercon2"'
+            manifestPlaceholders = [
+                    ic_app: "@mipmap/icon_2"
+            ]
         }
     }
 }
